@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.UserCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.user.entity.User">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="TYPE" jdbcType="CHAR" property="type" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="GENDER" jdbcType="BIT" property="gender" />
+    <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="ID_NUMBER" jdbcType="VARCHAR" property="idNumber" />
+    <result column="STATUS" jdbcType="BIT" property="status" />
+    <result column="USER_LOGIN_ID" jdbcType="CHAR" property="userLoginId" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="CREATE_USER_ID" jdbcType="CHAR" property="createUserId" />
+    <result column="UPDATE_USER_ID" jdbcType="CHAR" property="updateUserId" />
+  </resultMap>
+  <select id="getUsersByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, `TYPE`, `NAME`, GENDER, BIRTHDAY, PHONE_NUMBER, ID_NUMBER, `STATUS`, USER_LOGIN_ID,
+    TENANT_ID, CREATE_TIME, UPDATE_TIME, CREATE_USER_ID, UPDATE_USER_ID
+    from user
+    where 1=1
+    <if test='tenantId!=null'>
+      and TENANT_ID = #{tenantId}
+    </if>
+    <if test='idNumber!=null'>
+      and ID_NUMBER = #{idNumber}
+    </if>
+    <if test='phoneNumber!=null'>
+      and PHONE_NUMBER = #{phoneNumber}
+    </if>
+    <if test='name!=null'>
+      and `NAME` = #{name}
+    </if>
+    <if test='updateUserId!=null'>
+      and UPDATE_USER_ID = #{updateUserId}
+    </if>
+    <if test='updateTimeStart!=null'>
+      and UPDATE_TIME <![CDATA[>=]]> #{updateTimeStart}
+    </if>
+    <if test='updateTimeEnd!=null'>
+      and UPDATE_TIME <![CDATA[<=]]> #{updateTimeEnd}
+    </if>
+  </select>
+</mapper>

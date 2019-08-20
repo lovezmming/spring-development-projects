@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.edumeta.dao.custom.SubjectCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.edumeta.entity.Subject">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="CORE_ID" jdbcType="INTEGER" property="coreId" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="DEPARTMENT_ID" jdbcType="CHAR" property="departmentId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="STATUS" jdbcType="BIT" property="status" />
+    <result column="SEQ" jdbcType="INTEGER" property="seq" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_USER_ID" jdbcType="CHAR" property="updateUserId" />
+    <result column="CREATE_USER_ID" jdbcType="CHAR" property="createUserId" />
+  </resultMap>
+  <select id="getSubjectsByParams" parameterType="java.util.Map" resultMap="BaseResultMap" >
+    select ID, CORE_ID, TENANT_ID, DEPARTMENT_ID, `NAME`, `STATUS`, SEQ, CREATE_TIME,
+    UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_ID
+    from subject
+    where 1=1
+    <if test="tenantId != null">
+      and TENANT_ID = #{tenantId}
+    </if>
+    <if test="name != null">
+      and `NAME` = #{name}
+    </if>
+    <if test="status != null">
+      and `STATUS` = #{status}
+    </if>
+    <if test="udpateUserId != null">
+      and UPDATE_USER_ID = #{udpateUserId}
+    </if>
+    <if test='updateTimeStart!=null'>
+      and UPDATE_TIME <![CDATA[>=]]> #{updateTimeStart}
+    </if>
+    <if test='updateTimeEnd!=null'>
+      and UPDATE_TIME <![CDATA[<=]]> #{updateTimeEnd}
+    </if>
+  </select>
+  <select id="getSubjects" parameterType="java.util.HashMap" resultMap="BaseResultMap" >
+    select ID, CORE_ID, TENANT_ID, DEPARTMENT_ID, `NAME`, `STATUS`, SEQ, CREATE_TIME,
+    UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_ID
+    from subject
+    where 1=1
+    <if test="tenantId != null">
+      and TENANT_ID = #{tenantId}
+    </if>
+    <if test="name != null">
+      and `NAME` = #{name}
+    </if>
+    <if test="status != null">
+      and `STATUS` = #{status}
+    </if>
+    <if test="udpateUserId != null">
+      and UPDATE_USER_ID = #{udpateUserId}
+    </if>
+    <if test='updateTimeStart!=null'>
+      and UPDATE_TIME <![CDATA[>=]]> #{updateTimeStart}
+    </if>
+    <if test='updateTimeEnd!=null'>
+      and UPDATE_TIME <![CDATA[<=]]> #{updateTimeEnd}
+    </if>
+  </select>
+</mapper>

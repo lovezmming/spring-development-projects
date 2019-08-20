@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.DutyPermissionRelationCustomDao">
+  <resultMap id="ResultMap" type="com.shev.compilation.user.entity.DutyPermissionRelation">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="DUTY_ID" jdbcType="CHAR" property="dutyId" />
+    <result column="PERMISSION_ID" jdbcType="CHAR" property="permissionId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="CREATE_USER_ID" jdbcType="CHAR" property="createUserId" />
+    <result column="UPDATE_USER_ID" jdbcType="CHAR" property="updateUserId" />
+  </resultMap>
+  <select id="getDutyPermissionRelationsByDutyId" parameterType="java.lang.String" resultMap="ResultMap">
+    select ID, DUTY_ID, PERMISSION_ID, CREATE_TIME, UPDATE_TIME, CREATE_USER_ID, UPDATE_USER_ID
+    from duty_permission_relation
+    where DUTY_ID = #{_parameter}
+  </select>
+  <select id="getDutyPermissionRelationsByPermissionId" parameterType="java.lang.String" resultMap="ResultMap">
+    select ID, DUTY_ID, PERMISSION_ID, CREATE_TIME, UPDATE_TIME, CREATE_USER_ID, UPDATE_USER_ID
+    from duty_permission_relation
+    where PERMISSION_ID = #{_parameter}
+  </select>
+</mapper>

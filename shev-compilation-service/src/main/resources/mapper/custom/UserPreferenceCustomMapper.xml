@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.UserPreferenceCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.user.entity.UserPreference">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="RETAIN_SUBJECT_STAGE" jdbcType="BIT" property="retainSubjectStage" />
+    <result column="RETAIN_EXERCISE_TYPE" jdbcType="BIT" property="retainExerciseType" />
+    <result column="RETIAN_CHECK_INFO" jdbcType="BIT" property="retianCheckInfo" />
+    <result column="ATUO_BACKGROUND_PICTURE" jdbcType="BIT" property="atuoBackgroundPicture" />
+    <result column="USER_ID" jdbcType="CHAR" property="userId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="getUserPreferenceByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID, RETAIN_SUBJECT_STAGE, RETAIN_EXERCISE_TYPE, RETIAN_CHECK_INFO, ATUO_BACKGROUND_PICTURE,
+    USER_ID, CREATE_TIME, UPDATE_TIME
+    from user_preference
+    where USER_ID = #{_parameter}
+  </select>
+</mapper>

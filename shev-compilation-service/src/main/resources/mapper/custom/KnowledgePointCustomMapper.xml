@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.edumeta.dao.custom.KnowledgePointCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.edumeta.entity.KnowledgePoint">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SUBJECT_ID" jdbcType="INTEGER" property="subjectId" />
+    <result column="EDUCATIONAL_STAGE_ID" jdbcType="INTEGER" property="educationalStageId" />
+    <result column="PARENT_ID" jdbcType="CHAR" property="parentId" />
+    <result column="DEPTH" jdbcType="INTEGER" property="depth" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_USER_ID" jdbcType="CHAR" property="updateUserId" />
+    <result column="CREATE_USER_ID" jdbcType="CHAR" property="createUserId" />
+  </resultMap>
+  <select id="getKnowledgePointsByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, `NAME`, SUBJECT_ID, EDUCATIONAL_STAGE_ID, PARENT_ID, `DEPTH`, URL, CREATE_TIME,
+    UPDATE_TIME, UPDATE_USER_ID, CREATE_USER_ID
+    from knowledge_point
+    where 1=1
+    <if test="subjectId != null">
+      and SUBJECT_ID = #{subjectId}
+    </if>
+    <if test="educationalStageId != null">
+      and EDUCATIONAL_STAGE_ID = #{educationalStageId}
+    </if>
+    <if test="depth != null">
+      and `DEPTH` = #{depth}
+    </if>
+    <if test="parentId != null">
+      and PARENT_ID = #{parentId}
+    </if>
+  </select>
+</mapper>

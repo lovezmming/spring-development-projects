@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.UserRecordCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.user.entity.UserRecord">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="USER_ID" jdbcType="CHAR" property="userId" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="SOURCE_ID" jdbcType="CHAR" property="sourceId" />
+    <result column="SOURCE_TYPE_ID" jdbcType="CHAR" property="sourceTypeId" />
+    <result column="OPERATE_TYPE" jdbcType="VARCHAR" property="operateType" />
+    <result column="EDUCATIONAL_STAGE_ID" jdbcType="CHAR" property="educationalStageId" />
+    <result column="SUBJECT_ID" jdbcType="CHAR" property="subjectId" />
+    <result column="CATEGORY_ID" jdbcType="CHAR" property="categoryId" />
+    <result column="REFENCE_ID" jdbcType="CHAR" property="refenceId" />
+    <result column="ERROR_META" jdbcType="INTEGER" property="errorMeta" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="getUserRecordsByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, USER_ID, `TYPE`, SOURCE_ID, SOURCE_TYPE_ID, OPERATE_TYPE, EDUCATIONAL_STAGE_ID,
+    SUBJECT_ID, CATEGORY_ID, REFENCE_ID, ERROR_META, TENANT_ID, CREATE_TIME, UPDATE_TIME
+    from user_record
+    where TENANT_ID = #{tenantId}
+    <if test='type!=null'>
+      and TYPE = #{type}
+    </if>
+    <if test='userId!=null'>
+      and USER_ID = #{userId}
+    </if>
+    <if test='categoryId!=null'>
+      and CATEGORY_ID = #{categoryId}
+    </if>
+    <if test='educationStageId!=null'>
+      and EDUCATIONAL_STAGE_ID = #{educationStageId}
+    </if>
+    <if test='subjectId!=null'>
+      and SUBJECT_ID = #{subjectId}
+    </if>
+    <if test='errorMeta!=null'>
+      and ERROR_META = #{errorMeta}
+    </if>
+    <if test='sourceId!=null'>
+      and SOURCE_ID = #{sourceId}
+    </if>
+    <if test='sourceTypeId!=null'>
+      and SOURCE_TYPE_ID = #{sourceTypeId}
+    </if>
+    <if test='operateType!=null'>
+      and OPERATE_TYPE = #{operateType}
+    </if>
+    <if test='operateTimeStart!=null'>
+      and CREATE_TIME <![CDATA[>=]]> #{operateTimeStart}
+    </if>
+    <if test='operateTimeEnd!=null'>
+      and CREATE_TIME <![CDATA[<=]]> #{operateTimeEnd}
+    </if>
+  </select>
+</mapper>

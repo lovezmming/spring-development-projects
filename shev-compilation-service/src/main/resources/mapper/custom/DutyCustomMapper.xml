@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.DutyCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.user.entity.Duty">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="STATUS" jdbcType="BIT" property="status" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="CREATE_USER_ID" jdbcType="CHAR" property="createUserId" />
+    <result column="UPDATE_USER_ID" jdbcType="CHAR" property="updateUserId" />
+  </resultMap>
+  <select id="getDutiesByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, `NAME`, `STATUS`, TENANT_ID, CREATE_TIME, UPDATE_TIME, CREATE_USER_ID,
+    UPDATE_USER_ID
+    from duty
+    where TENANT_ID = #{tenantId}
+    <if test='name!=null'>
+      and `NAME` = #{name}
+    </if>
+    <if test='status!=null'>
+      and `STATUS` = #{status}
+    </if>
+    <if test='updateUserId!=null'>
+      and UPDATE_USER_ID = #{updateUserId}
+    </if>
+    <if test='updateTimeStart!=null'>
+      and UPDATE_TIME <![CDATA[>=]]> #{updateTimeStart}
+    </if>
+    <if test='updateTimeEnd!=null'>
+      and UPDATE_TIME <![CDATA[<=]]> #{updateTimeEnd}
+    </if>
+  </select>
+</mapper>

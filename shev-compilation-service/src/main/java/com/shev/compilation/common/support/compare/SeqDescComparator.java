@@ -1,0 +1,41 @@
+/*
+ * Copyright (c) 2016 上海极值信息技术有限公司 All Rights Reserved.
+ */
+package com.shev.compilation.common.support.compare;
+
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.util.Comparator;
+
+public class SeqDescComparator implements Comparator<Object>, Serializable
+{
+
+
+    /** serialVersionUID */
+    private static final long serialVersionUID = -8362170553625430120L;
+
+    @Override
+    public int compare(Object o1, Object o2)
+    {
+        try
+        {
+            Field field1 = o1.getClass().getDeclaredField("seq");
+            Field field2 = o2.getClass().getDeclaredField("seq");
+            field1.setAccessible(true);
+            field2.setAccessible(true);
+            Integer seq1 = (Integer) field1.get(o1);
+            Integer seq2 = (Integer) field2.get(o2);
+            
+            if (seq1 == seq2)
+                return 0;
+            if (seq1 == null)
+                return 1;
+            if (seq2 == null)
+                return -1;
+            return seq2.compareTo(seq1);
+        } catch (Exception e) {}
+        
+        return 0;
+    }
+    
+}

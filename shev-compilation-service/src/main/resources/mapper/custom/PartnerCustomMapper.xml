@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.PartnerCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.user.entity.Partner">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="ACCESS_KEY" jdbcType="VARCHAR" property="accessKey" />
+    <result column="SECRET_KEY" jdbcType="VARCHAR" property="secretKey" />
+    <result column="COMMENT" jdbcType="VARCHAR" property="comment" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="getPartnersByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, TENANT_ID, `TYPE`, `NAME`, ACCESS_KEY, SECRET_KEY, `COMMENT`, CREATE_TIME, UPDATE_TIME
+    from partner
+    where TENANT_ID = #{tenantId}
+    <if test='name!=null'>
+      and `NAME` = #{name}
+    </if>
+    <if test='type!=null'>
+      and `TYPE` = #{type}
+    </if>
+  </select>
+</mapper>

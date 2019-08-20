@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.shev</groupId>
+    <artifactId>spring-deployment-project</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!-- 学习spring boot 有段时间了，之前自写的项目太杂，这里整理一番,后续学习更新.. -->
+        <!-- 1.spring cloud demo 学习spring cloud 的基本功能 -->
+        <!-- spring-framework-core 地址：https://github.com/lovezmming/spring-framework-core -->
+        <!-- 2.spring boot 集成mybatis 实现多数据源（例如：两套数据源，每个数据源有多主多从） -->
+        <module>shev-compilation-service</module>
+
+    </modules>
+
+</project>

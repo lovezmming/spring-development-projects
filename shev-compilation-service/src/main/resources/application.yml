@@ -1,0 +1,126 @@
+server:
+  port: 9001
+
+request:
+  valid: 1
+  dateThru:
+    timePeriod: 7
+  timePeriod: 100
+
+jwt:
+  header: compilationAuth
+  secret: compilationSystem
+  expiration: 3600
+  tokenPrefix: "Bearer "
+
+logging:
+  config: classpath:logback.xml
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/**/*.xml
+#  config-location: classpath:datasource/dev/compilation-dev.yml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  rowBoundsWithCount: true
+  offset-as-page-num: true
+
+spring:
+  thymeleaf:
+    cache: true
+  profiles:
+    active: dev
+  aop:
+    auto: true
+  application:
+    name: shev-compilation-service
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml
+  datasource:
+#    url: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    url: jdbc:mysql://192.168.1.129:50121/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    driver-class-name: com.mysql.jdbc.Driver
+#    data-username: root
+#    data-password: root
+    name: compilation-mysql
+    slaveCount: 4
+    account:
+      master:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcurl: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password:
+      slave:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password:
+    edumeta:
+      master1:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcurl: jdbc:mysql://192.168.1.129:50121/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password: root
+      master2:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcurl: jdbc:mysql://192.168.1.129:50122/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password: root
+      master3:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcurl: jdbc:mysql://192.168.1.129:50123/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password: root
+      master4:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcurl: jdbc:mysql://192.168.1.129:50124/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password: root
+      slave1:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.1.129:50131/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+        username: root
+        password: root
+      slave2:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.1.129:50132/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+        username: root
+        password: root
+      slave3:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.1.129:50133/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+        username: root
+        password: root
+      slave4:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.1.129:50134/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+        username: root
+        password: root
+    exercise:
+      master1:
+      master2:
+    paper:
+      master1:
+
+    read: get,select,count,list,query,find
+    write: add,create,update,delete,remove,insert
+    druid:
+      filters: stat,wall
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.compilation.user.dao.custom.UserLoginCustomDao">
+  <resultMap id="BaseResultMap" type="com.shev.compilation.user.entity.UserLogin">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="USER_ID" jdbcType="CHAR" property="userId" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="COMMENT" jdbcType="VARCHAR" property="comment" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="LAST_LOGIN_TIME" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="getUserLoginsByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, USER_ID, USER_NAME, `PASSWORD`, `COMMENT`, TENANT_ID, LAST_LOGIN_TIME,
+    CREATE_TIME, UPDATE_TIME
+    from user_login
+    where 1=1
+    <if test="tenantId != null">
+      and TENANT_ID = #{tenantId}
+    </if>
+    <if test="username != null">
+      and USER_NAME = #{username}
+    </if>
+    <if test="password != null">
+      and PASSWORD = #{password}
+    </if>
+    <if test="userId != null">
+      and USER_ID = #{userId}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.itembank.resource.custom.AudioAttributeCustomMapper">
+  <resultMap id="BaseResultMap" type="com.shev.itembank.resource.entity.AudioAttribute">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="DURATION" jdbcType="INTEGER" property="duration" />
+    <result column="RESOURCE_ID" jdbcType="CHAR" property="resourceId" />
+  </resultMap>
+
+  <select id="selectByParameter" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, DURATION, RESOURCE_ID
+    from audio_attribute
+    where 1=1
+    <if test="resourceId != null">
+      and RESOURCE_ID = #{resourceId}
+    </if>
+  </select>
+</mapper>

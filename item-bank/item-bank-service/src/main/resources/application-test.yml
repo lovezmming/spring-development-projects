@@ -1,0 +1,143 @@
+server:
+  port: 8085
+
+spring:
+  batch:
+    job:
+      enabled: false
+      names: item-bank
+  application:
+    name: item-bank
+  aop:
+    auto: true
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 210.14.73.152:9300
+      repositories:
+        enabled: true
+  redis:
+    port: 6379
+    host: 192.168.99.52
+    password: root123
+    timeout: 5000s
+    jedis:
+      pool:
+        max-wait: 2000s
+        max-idle: 10
+        max-active: 1000
+  datasource:
+    edumeta:
+      master:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44001/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      slave:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44101/edumeta?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    exercise:
+      master:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44001/exercise?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      slave:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44101/exercise?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    paper:
+      master:
+        data-username: root
+        data-password: root
+        #        url: jdbc:mysql://192.168.99.53:44001/paper?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        url: jdbc:mysql://192.168.1.31:44001/paper?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      slave:
+        data-username: root
+        data-password: root
+        #        url: jdbc:mysql://192.168.99.53:44101/paper?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        url: jdbc:mysql://210.14.73.154:44101/paper?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    system:
+      master:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44001/system?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      slave:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44101/system?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    read: get,select,count,list,query,find
+    write: add,create,update,delete,remove,insert
+    druid:
+      filters: stat,wall
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+
+mybatis:
+  mapper-locations: classpath*:com/shev/itembank/**/*.xml
+  type-aliases-package: com.shev.itembank.**.mapper
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  rowBoundsWithCount: true
+  offset-as-page-num: true
+
+zookeeper:
+  enable: false
+  server:
+  sessionTimeoutMs: 1000
+  maxRetries: 3
+  baseSleepTimeMs: 1000
+  connectionTimeoutMs: 6000
+  namespace: itembank
+
+request:
+  valid: 1
+  timePeriod: 2000
+
+connect:
+  timeout: 15000
+read:
+  timeout: 5000
+
+latex:
+  url: localhost:9002/latex/latex2Pic
+
+logging:
+  config: classpath:logback.xml
+  level:
+    com.shev.itembank.*.mapper : debug
+    com.shev.itembank.*.custom : debug
+
+tiku:
+  all_username: root
+  all_password: root
+  driverClass: com.mysql.jdbc.Driver
+  master_url1: jdbc:mysql://192.168.1.30:44001
+  master_url2: jdbc:mysql://192.168.1.31:44002
+  master_url3: jdbc:mysql://192.168.1.32:44003
+  master_url4: jdbc:mysql://192.168.1.33:44004
+  slave_url1: jdbc:mysql://192.168.1.30:44001
+  slave_url2: jdbc:mysql://192.168.1.31:44002
+  slave_url3: jdbc:mysql://192.168.1.32:44003
+  slave_url4: jdbc:mysql://192.168.1.33:44004

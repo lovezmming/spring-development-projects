@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.itembank.system.custom.PartnerCustomMapper">
+  <resultMap id="BaseResultMap" type="com.shev.itembank.system.entity.Partner">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="TENANT_ID" jdbcType="CHAR" property="tenantId" />
+    <result column="TYPE" jdbcType="CHAR" property="type" />
+    <result column="NAME" jdbcType="CHAR" property="name" />
+    <result column="API_ENDPOINT" jdbcType="VARCHAR" property="apiEndpoint" />
+    <result column="ACCESS_KEY" jdbcType="VARCHAR" property="accessKey" />
+    <result column="SECRET_KEY" jdbcType="VARCHAR" property="secretKey" />
+    <result column="ENABLED" jdbcType="BIT" property="enabled" />
+    <result column="LONG_TICKET" jdbcType="VARCHAR" property="longTicket" />
+    <result column="TICKET_DATE_THRU" jdbcType="TIMESTAMP" property="ticketDateThru" />
+    <result column="REFRESH_TOKEN" jdbcType="VARCHAR" property="refreshToken" />
+    <result column="COMMENT" jdbcType="VARCHAR" property="comment" />
+    <result column="DATE_FROM" jdbcType="TIMESTAMP" property="dateFrom" />
+    <result column="DATE_THRU" jdbcType="TIMESTAMP" property="dateThru" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <select id="selectByParameter" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, TENANT_ID, `TYPE`, `NAME`, API_ENDPOINT, ACCESS_KEY, SECRET_KEY, ENABLED,
+    LONG_TICKET, TICKET_DATE_THRU, REFRESH_TOKEN, `COMMENT`, DATE_FROM, DATE_THRU, CREATE_TIME, 
+    UPDATE_TIME
+    from partner
+    where 1=1
+    <if test="tenantId != null">
+      and TENANT_ID = #{tenantId}
+    </if>
+    <if test="type != null">
+      and `TYPE` = #{type}
+    </if>
+    <if test="name != null">
+      and `NAME` = #{name}
+    </if>
+    <if test="date != null">
+      and ENABLED = 1
+      and DATE_FROM <![CDATA[ <= ]]> #{date}
+      and (DATE_THRU is null or DATE_THRU <![CDATA[ >= ]]> #{date} )
+    </if>
+  </select>
+
+</mapper>

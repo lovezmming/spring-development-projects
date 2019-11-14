@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.itembank.resource.custom.ResourcePublishCustomMapper">
+  <resultMap id="BaseResultMap" type="com.shev.itembank.resource.entity.ResourcePublish">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="RESOURCE_ID" jdbcType="CHAR" property="resourceId" />
+    <result column="PUBLISH_URL" jdbcType="VARCHAR" property="publishUrl" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <select id="selectByParameter" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, RESOURCE_ID, PUBLISH_URL, CREATE_TIME, UPDATE_TIME
+    from resource_publish
+    where 1=1
+    <if test="resourceId != null">
+      and RESOURCE_ID = #{resourceId}
+    </if>
+  </select>
+</mapper>

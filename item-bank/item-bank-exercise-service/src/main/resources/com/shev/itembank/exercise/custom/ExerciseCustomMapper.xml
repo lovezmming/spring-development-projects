@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shev.itembank.exercise.custom.ExerciseCustomMapper">
+  <resultMap id="BaseResultMap" type="com.shev.itembank.exercise.entity.Exercise">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="FORM_TYPE" jdbcType="INTEGER" property="formType" />
+    <result column="SEMANTIC_TYPES" jdbcType="VARCHAR" property="semanticTypes" />
+    <result column="KNOWLEDGE_POINT_IDS" jdbcType="VARCHAR" property="knowledgePointIds" />
+    <result column="SOURCE_ID" jdbcType="CHAR" property="sourceId" />
+    <result column="SUBJECT_ID" jdbcType="INTEGER" property="subjectId" />
+    <result column="EDUCATIONAL_STAGE" jdbcType="INTEGER" property="educationalStage" />
+    <result column="SIGNIFICANCE" jdbcType="INTEGER" property="significance" />
+    <result column="SELECTED" jdbcType="BIT" property="selected" />
+    <result column="ERROR_PRONE" jdbcType="BIT" property="errorProne" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="RELATION_TYPE" jdbcType="CHAR" property="relationType" />
+    <result column="PARENT_ID" jdbcType="CHAR" property="parentId" />
+    <result column="KP_DIFFICULTY" jdbcType="INTEGER" property="kpDifficulty" />
+    <result column="ABSOLUTE_DIFFICULTY_63" jdbcType="INTEGER" property="absoluteDifficulty63" />
+    <result column="ABSOLUTE_DIFFICULTY_54" jdbcType="INTEGER" property="absoluteDifficulty54" />
+    <result column="SCORE_WEIGHT" jdbcType="DECIMAL" property="scoreWeight" />
+    <result column="SEQ" jdbcType="INTEGER" property="seq" />
+    <result column="REF1" jdbcType="VARCHAR" property="ref1" />
+    <result column="REF2" jdbcType="VARCHAR" property="ref2" />
+    <result column="CREATE_YEAR" jdbcType="INTEGER" property="createYear" />
+    <result column="UPDATE_YEAR" jdbcType="INTEGER" property="updateYear" />
+    <result column="UPDATE_USER" jdbcType="CHAR" property="updateUser" />
+    <result column="CATEGORY_ID" jdbcType="CHAR" property="categoryId" />
+    <result column="CONTENT" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <select id="selectByParameter" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select ID, FORM_TYPE, SEMANTIC_TYPES, KNOWLEDGE_POINT_IDS, SOURCE_ID, SUBJECT_ID,
+    EDUCATIONAL_STAGE, SIGNIFICANCE, SELECTED, ERROR_PRONE, CREATE_TIME, UPDATE_TIME, 
+    RELATION_TYPE, PARENT_ID, KP_DIFFICULTY, ABSOLUTE_DIFFICULTY_63, ABSOLUTE_DIFFICULTY_54, 
+    SCORE_WEIGHT, SEQ, REF1, REF2, CREATE_YEAR, UPDATE_YEAR, UPDATE_USER, CATEGORY_ID, 
+    CONTENT
+    from exercise
+    where 1=1
+    <if test="dateFrom != null">
+      and UPDATE_TIME <![CDATA[ >= ]]> #{dateFrom}
+    </if>
+    <if test="dateThru != null">
+      and UPDATE_TIME <![CDATA[ <= ]]> #{dateThru}
+    </if>
+  </select>
+</mapper>

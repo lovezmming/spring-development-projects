@@ -1,0 +1,66 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: item-bank-latex-service
+  aop:
+    auto: true
+  datasource:
+    system:
+      master:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44001/system?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      slave:
+        data-username: root
+        data-password: root
+        url: jdbc:mysql://192.168.99.53:44101/system?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    read: get,select,count,list,query,find
+    write: add,create,update,delete,remove,insert
+    druid:
+      filters: stat,wall
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+
+mybatis:
+  mapper-locations: classpath*:com/shev/itembank/**/*.xml
+  type-aliases-package: com.shev.itembank.**.mapper,com.shev.itembank.**.custom
+
+tenant:
+  default: 000001
+
+request:
+  valid: 1
+  timePeriod: 2000
+connect:
+  timeout: 15000
+read:
+  timeout: 5000
+
+zookeeper:
+  enable: false
+  server:
+  sessionTimeoutMs: 1000
+  maxRetries: 3
+  baseSleepTimeMs: 1000
+  connectionTimeoutMs: 6000
+  namespace: itembank
+
+logging:
+  level:
+    com.shev.itembank.*.mapper : debug
+    com.shev.itembank.*.custom : debug
+  config: classpath:logback.xml

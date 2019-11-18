@@ -13,3 +13,5 @@ item-bank
   4.docker部署与env环境配置切换  
   5.@Scheduled自定义批处理  
   6.event事件与多线程task  
+shev-mongodb  
+  1.实现mongodb基础操作  

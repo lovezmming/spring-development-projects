@@ -1,0 +1,11 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: shev-mongodb
+  data:
+    mongodb:
+      host: 192.168.99.128
+      port: 27017
+      database: zm
+

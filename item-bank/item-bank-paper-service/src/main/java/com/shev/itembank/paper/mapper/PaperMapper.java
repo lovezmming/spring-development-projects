@@ -1,6 +1,7 @@
 package com.shev.itembank.paper.mapper;
 
 import com.shev.itembank.paper.entity.Paper;
+
 import java.util.List;
 
 public interface PaperMapper {

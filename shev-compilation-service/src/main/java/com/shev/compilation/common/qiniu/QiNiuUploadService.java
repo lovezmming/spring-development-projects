@@ -8,7 +8,6 @@ import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
-import com.shev.compilation.common.support.web.RecordSet;
 import com.shev.compilation.user.dao.custom.PartnerCustomDao;
 import com.shev.compilation.user.entity.Partner;
 import org.slf4j.Logger;

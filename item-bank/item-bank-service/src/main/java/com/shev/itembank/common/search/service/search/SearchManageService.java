@@ -2,9 +2,7 @@ package com.shev.itembank.common.search.service.search;
 
 import com.shev.itembank.common.base.result.RecordSet;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public interface SearchManageService
 {

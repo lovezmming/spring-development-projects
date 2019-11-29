@@ -1,6 +1,7 @@
 package com.shev.itembank.system.mapper;
 
 import com.shev.itembank.system.entity.Partner;
+
 import java.util.List;
 
 public interface PartnerMapper {

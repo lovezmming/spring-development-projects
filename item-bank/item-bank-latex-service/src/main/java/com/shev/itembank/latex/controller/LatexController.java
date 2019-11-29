@@ -1,13 +1,12 @@
 package com.shev.itembank.latex.controller;
 
+import com.shev.itembank.latex.request.LatexRequest;
+import com.shev.itembank.latex.service.LatexService;
 import com.shev.itembank.resource.service.UploadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import com.shev.itembank.latex.request.LatexRequest;
-import com.shev.itembank.latex.service.LatexService;
 
 import java.util.HashMap;
 import java.util.Map;

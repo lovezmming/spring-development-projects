@@ -1,17 +1,5 @@
 package com.shev.itembank.common.batch;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.shev.itembank.common.Enum.DataServiceEnum;
@@ -27,6 +15,17 @@ import com.shev.itembank.system.service.PublicService;
 import com.shev.itembank.task.custom.EsBatchIndexTaskCustomMapper;
 import com.shev.itembank.task.entity.EsBatchIndexTask;
 import com.shev.itembank.task.mapper.EsBatchIndexTaskMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public class ExerciseProcessor

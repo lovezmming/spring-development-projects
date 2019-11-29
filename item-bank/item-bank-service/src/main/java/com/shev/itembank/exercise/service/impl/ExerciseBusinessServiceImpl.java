@@ -1,39 +1,9 @@
 package com.shev.itembank.exercise.service.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.shev.itembank.common.Enum.*;
-import com.shev.itembank.common.base.exception.BusinessException;
 import com.shev.itembank.common.base.result.RecordSet;
 import com.shev.itembank.common.base.util.*;
-import com.shev.itembank.common.base.web.HttpServletBasicRequest;
 import com.shev.itembank.common.redis.service.CacheService;
 import com.shev.itembank.common.search.service.search.SearchManageService;
 import com.shev.itembank.edumeta.entity.*;
@@ -43,21 +13,15 @@ import com.shev.itembank.exercise.entity.*;
 import com.shev.itembank.exercise.mapper.*;
 import com.shev.itembank.exercise.request.*;
 import com.shev.itembank.exercise.service.ExerciseBusinessService;
-import com.shev.itembank.exercise.support.ExerciseDetail;
-import com.shev.itembank.exercise.support.event.ExerciseSpEvent;
-import com.shev.itembank.paper.custom.PaperSectionExerciseRelationCustomMapper;
-import com.shev.itembank.paper.entity.Paper;
-import com.shev.itembank.paper.entity.PaperSectionExerciseRelation;
 import com.shev.itembank.paper.mapper.PaperMapper;
-import com.shev.itembank.resource.entity.AudioAttribute;
-import com.shev.itembank.resource.entity.QiNiuFileInfo;
-import com.shev.itembank.resource.entity.Resource;
-import com.shev.itembank.resource.mapper.AudioAttributeMapper;
-import com.shev.itembank.resource.mapper.ResourceMapper;
-import com.shev.itembank.resource.service.UploadService;
-import com.shev.itembank.system.custom.PartnerCustomMapper;
-import com.shev.itembank.system.entity.Partner;
-import com.shev.itembank.system.service.PublicService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 @Service("ExerciseBusinessServiceImpl")
 public class ExerciseBusinessServiceImpl implements ExerciseBusinessService
@@ -103,7 +67,10 @@ public class ExerciseBusinessServiceImpl implements ExerciseBusinessService
         params.put("type", type);
         params.put("xmlContent", solutionsXMLStr);
         String requestJson = JSONObject.toJSONString(params);
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(latexUrl, requestJson, Map.class);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        HttpEntity<String> httpEntity = new HttpEntity<String>(requestJson, httpHeaders);
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(latexUrl, HttpMethod.POST, httpEntity, Map.class);
         return (Map<String, Object>) responseEntity.getBody();
     }
 

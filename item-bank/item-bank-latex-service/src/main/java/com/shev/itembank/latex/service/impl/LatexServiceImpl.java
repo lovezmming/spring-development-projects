@@ -1,23 +1,5 @@
 package com.shev.itembank.latex.service.impl;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.util.*;
-import java.util.List;
-
-import javax.imageio.ImageIO;
-
-import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
 import com.shev.itembank.latex.entity.ElementWithPngMessage;
 import com.shev.itembank.latex.service.LatexService;
@@ -25,6 +7,21 @@ import com.shev.itembank.latex.util.*;
 import com.shev.itembank.resource.service.UploadService;
 import com.shev.itembank.system.custom.PartnerCustomMapper;
 import com.shev.itembank.system.entity.Partner;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.*;
+import java.util.List;
 
 @Service
 public class LatexServiceImpl implements LatexService

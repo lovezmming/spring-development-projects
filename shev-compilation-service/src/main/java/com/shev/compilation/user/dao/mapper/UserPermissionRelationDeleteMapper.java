@@ -1,6 +1,7 @@
 package com.shev.compilation.user.dao.mapper;
 
 import com.shev.compilation.user.entity.UserPermissionRelationDelete;
+
 import java.util.List;
 
 public interface UserPermissionRelationDeleteMapper {

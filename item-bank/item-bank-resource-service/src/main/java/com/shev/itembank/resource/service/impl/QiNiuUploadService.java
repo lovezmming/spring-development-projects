@@ -1,15 +1,5 @@
 package com.shev.itembank.resource.service.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
@@ -31,6 +21,15 @@ import com.shev.itembank.resource.service.UploadService;
 import com.shev.itembank.resource.util.ThumbUtil;
 import com.shev.itembank.system.custom.PartnerCustomMapper;
 import com.shev.itembank.system.entity.Partner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service("service.upload.qiniu")
 @Scope("prototype")

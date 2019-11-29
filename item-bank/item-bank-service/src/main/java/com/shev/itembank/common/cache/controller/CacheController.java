@@ -1,15 +1,14 @@
 package com.shev.itembank.common.cache.controller;
 
+import com.shev.itembank.common.base.web.WebBasicController;
 import com.shev.itembank.common.cache.request.CacheRequest;
+import com.shev.itembank.common.redis.service.CacheService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import com.shev.itembank.common.base.web.WebBasicController;
-import com.shev.itembank.common.redis.service.CacheService;
 
 @RestController
 @RequestMapping("/cache")

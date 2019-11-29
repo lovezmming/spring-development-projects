@@ -1,14 +1,13 @@
 package com.shev.itembank.system.service.impl;
 
 import com.shev.itembank.common.Enum.TenantAttributeEnum;
+import com.shev.itembank.common.base.util.TextUtil;
+import com.shev.itembank.common.redis.service.CacheService;
 import com.shev.itembank.system.custom.TenantAttributeCustomMapper;
+import com.shev.itembank.system.entity.TenantAttribute;
 import com.shev.itembank.system.service.PublicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.shev.itembank.common.base.util.TextUtil;
-import com.shev.itembank.common.redis.service.CacheService;
-import com.shev.itembank.system.entity.TenantAttribute;
 
 import java.util.HashMap;
 import java.util.List;

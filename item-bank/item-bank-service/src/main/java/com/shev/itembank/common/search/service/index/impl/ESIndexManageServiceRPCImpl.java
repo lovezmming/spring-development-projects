@@ -1,13 +1,14 @@
 package com.shev.itembank.common.search.service.index.impl;
 
-import java.net.InetAddress;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
+import com.shev.itembank.common.base.exception.BusinessException;
+import com.shev.itembank.common.base.util.TextUtil;
+import com.shev.itembank.common.elasticsearch.index.IndexName;
+import com.shev.itembank.common.search.service.index.IndexManageService;
+import com.shev.itembank.exercise.custom.*;
+import com.shev.itembank.exercise.entity.*;
+import com.shev.itembank.exercise.mapper.ExerciseMapper;
+import com.shev.itembank.paper.entity.Paper;
+import com.shev.itembank.paper.mapper.PaperMapper;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateRequest;
@@ -30,30 +31,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.shev.itembank.common.Enum.ConstantEnum;
-import com.shev.itembank.common.Enum.ExerciseRelationEnum;
-import com.shev.itembank.common.base.exception.BusinessException;
-import com.shev.itembank.common.base.util.TextUtil;
-import com.shev.itembank.common.elasticsearch.index.IndexName;
-import com.shev.itembank.common.search.service.index.IndexManageService;
-import com.shev.itembank.edumeta.custom.ProficiencyCustomMapper;
-import com.shev.itembank.edumeta.entity.Proficiency;
-import com.shev.itembank.edumeta.entity.TextbookStructureCategory;
-import com.shev.itembank.edumeta.mapper.ProficiencyMapper;
-import com.shev.itembank.edumeta.mapper.TextbookStructureCategoryMapper;
-import com.shev.itembank.exercise.custom.*;
-import com.shev.itembank.exercise.entity.*;
-import com.shev.itembank.exercise.mapper.ExerciseAddInfoMapper;
-import com.shev.itembank.exercise.mapper.ExerciseMapper;
-import com.shev.itembank.paper.custom.PaperCityRelationCustomMapper;
-import com.shev.itembank.paper.custom.PaperProvinceRelationCustomMapper;
-import com.shev.itembank.paper.custom.PaperSectionExerciseRelationCustomMapper;
-import com.shev.itembank.paper.entity.Paper;
-import com.shev.itembank.paper.entity.PaperCityRelation;
-import com.shev.itembank.paper.entity.PaperProvinceRelation;
-import com.shev.itembank.paper.entity.PaperSectionExerciseRelation;
-import com.shev.itembank.paper.mapper.PaperMapper;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.net.InetAddress;
+import java.util.*;
 
 @Service("ESIndexManageServiceRPCImpl")
 public class ESIndexManageServiceRPCImpl implements IndexManageService

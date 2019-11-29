@@ -1,6 +1,7 @@
 package com.shev.itembank.task.mapper;
 
 import com.shev.itembank.task.entity.EsBatchIndexTask;
+
 import java.util.List;
 
 public interface EsBatchIndexTaskMapper {

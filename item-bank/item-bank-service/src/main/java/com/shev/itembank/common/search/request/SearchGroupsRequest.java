@@ -1,7 +1,6 @@
 package com.shev.itembank.common.search.request;
 
 import com.shev.itembank.common.base.web.HttpServletBasicRequest;
-
 import lombok.Data;
 
 @Data

@@ -3,7 +3,6 @@ package com.shev.compilation.user.cache.service.impl;
 import com.shev.compilation.common.Enum.CacheKeyEnum;
 import com.shev.compilation.common.Enum.CacheNameEnum;
 import com.shev.compilation.common.util.TextUtil;
-import com.shev.compilation.user.cache.UserCacheDataInit;
 import com.shev.compilation.user.cache.service.UserCacheService;
 import com.shev.compilation.user.dao.service.UserDaoService;
 import com.shev.compilation.user.entity.*;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

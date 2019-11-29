@@ -1,8 +1,6 @@
 package com.shev.compilation.edumeta.dao.service.impl;
 
 import com.shev.compilation.common.datasource.BaseDao;
-import com.shev.compilation.common.datasource.dynamic.DataSourceMasterQuery;
-import com.shev.compilation.common.datasource.dynamic.DataSourceQuery;
 import com.shev.compilation.common.datasource.dynamic.DataSourceUpdate;
 import com.shev.compilation.common.support.compare.UpdateTimeDescComparator;
 import com.shev.compilation.common.support.web.RecordSet;

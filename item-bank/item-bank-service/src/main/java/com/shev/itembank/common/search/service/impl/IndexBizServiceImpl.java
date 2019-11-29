@@ -1,15 +1,5 @@
 package com.shev.itembank.common.search.service.impl;
 
-import java.util.Date;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.shev.itembank.common.base.util.TextUtil;
 import com.shev.itembank.common.search.request.SubmitIndexingTaskRequest;
 import com.shev.itembank.common.search.service.IndexBizService;
@@ -25,6 +15,15 @@ import com.shev.itembank.exercise.mapper.ExerciseMapper;
 import com.shev.itembank.paper.custom.PaperCustomMapper;
 import com.shev.itembank.system.service.PublicService;
 import com.shev.itembank.task.mapper.EsBatchIndexTaskMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Service
 public class IndexBizServiceImpl implements IndexBizService

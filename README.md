@@ -1,5 +1,6 @@
 # spring-development-projects
 spring boot or cloud deployment projects  
+
 shev-complication-service  
   add(2019-10-25)  
   1.mybatis多数据源支持，详细可参考https://mp.weixin.qq.com/s/7ATe9n54JvjdDCxhMwl-YA  
@@ -7,8 +8,9 @@ shev-complication-service
   3.本地缓存实现：memcache  
   4.qiniu,excel等工具功能支持  
   5.logback日志集成  
+  
 item-bank  
-  add(2019-11-1)
+  add(2019-11-1)  
   1.mybatis多数据源实现:多schemal主从  
   2.redis、elasticsearch、swagger、zookeeper集成  
   3.远程调用集成：同feign，使用template根据ip访问  
@@ -23,3 +25,8 @@ item-bank
   
 shev-mongodb  
   1.实现mongodb基础操作  
+  
+java2python  
+  1.实现java与python交互  
+  2.python接收java请求并处理返回  
+    python代码：src/main/python2java/下两种方式  

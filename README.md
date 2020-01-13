@@ -24,9 +24,16 @@ item-bank
   3.调整latex服务支持war部署  
   
 shev-mongodb  
+  add(2019-12-12)   
   1.实现mongodb基础操作  
   
 java2python  
+  add(2019-12-26)   
   1.实现java与python交互  
   2.python接收java请求并处理返回  
     python代码：src/main/python2java/下两种方式  
+
+shev-dubbo-service  
+  add(2020-01-13)   
+  1.实现dubbo基础服务注册中心功能  
+  2.模拟多节点部署：2个服务提供者，1个消费者  

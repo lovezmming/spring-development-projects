@@ -1,0 +1,16 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: dubbo-provider-service-bak
+dubbo:
+  application:
+    name: dubbo-producer-bak
+  registry:
+    address: 192.168.99.128:2181
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20881
+  monitor:
+    protocol: registry

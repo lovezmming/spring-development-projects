@@ -9,12 +9,18 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!-- 学习spring boot 有段时间了，之前自写的项目太杂，这里整理一番,后续学习更新.. -->
         <!-- 1.spring cloud demo 学习spring cloud 的基本功能 -->
         <!-- spring-framework-core 地址：https://github.com/lovezmming/spring-framework-core -->
         <!-- 2.spring boot 集成mybatis 实现多数据源（例如：两套数据源，每个数据源有多主多从） -->
         <module>shev-compilation-service</module>
-
+        <!-- 3.springboot 单机两个服务，支持多数据源、远程调用 -->
+        <module>item-bank</module>
+        <!-- 4.java与python的互相请求访问 -->
+        <module>java2python</module>
+        <!-- 5.springboot支持mongodb实现 -->
+        <module>shev-mongodb</module>
+        <!-- 6.springboot支持dubbo实现：依赖zk作注册中心，实现服务治理 -->
+        <module>shev-dubbo-service</module>
     </modules>
 
 </project>

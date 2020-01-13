@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: dubbo-provider-service
+dubbo:
+  application:
+    name: dubbo-producer
+  registry:
+    address: 192.168.99.128:2181
+    protocol: zookeeper
+    timeout: 2000
+  protocol:
+    name: dubbo
+    port: 20880
+  monitor:
+    protocol: registry
+  provider:
+    timeout: 2000

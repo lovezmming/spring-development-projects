@@ -1,0 +1,17 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: dubbo-consumer-service
+dubbo:
+  application:
+    name: dubbo-consumer
+  registry:
+    address: 192.168.99.128:2181
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20880
+  monitor:
+    protocol: registry
+

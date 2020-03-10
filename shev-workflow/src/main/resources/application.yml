@@ -1,0 +1,12 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: shev-workflow
+  datasource:
+    url: jdbc:mysql://192.168.99.4:3306/flowable?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    data-password:
+flowable:
+  async-executor-activate: false

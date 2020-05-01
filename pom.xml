@@ -21,6 +21,10 @@
         <module>shev-mongodb</module>
         <!-- 6.springboot支持dubbo实现：依赖zk作注册中心，实现服务治理 -->
         <module>shev-dubbo-service</module>
+        <!-- 7.springboot集成workflow做工作流开发-->
+        <module>shev-workflow</module>
+        <!-- 8.springboot集成webservice做服务调用 -->
+        <module>soapmock</module>
     </modules>
 
 </project>

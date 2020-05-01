@@ -41,3 +41,8 @@ shev-dubbo-service
 shev-workflow  
   add(2020-03-10)  
   1.springboot集成flowable实现基本工作流功能  
+  
+soapmock  
+  add(2020-04-26)  
+  1.springboot集成cxf/spring-ws进行webservice服务端开发  
+  2.提供客户端调用方式  

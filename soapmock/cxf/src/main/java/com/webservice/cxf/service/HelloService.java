@@ -4,6 +4,9 @@ import com.webservice.cxf.request.HelloRequest;
 import com.webservice.cxf.response.HelloResponse;
 import org.apache.cxf.interceptor.InInterceptors;
 import org.springframework.stereotype.Service;
+import org.apache.cxf.interceptor.InInterceptors;
+import javax.jws.WebService;
+import javax.xml.ws.soap.SOAPBinding;
 
 @Service
 @WebService(

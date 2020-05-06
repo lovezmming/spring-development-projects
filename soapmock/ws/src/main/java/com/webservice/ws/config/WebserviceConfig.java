@@ -50,4 +50,13 @@ public class WebserviceConfig extends WsConfigurerAdapter {
         return messageFactory;
     }
 
+    @Bean
+    public FilterRegistrationBean webserviceFilter() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new WebserviceFilter());
+        ArrayList<String> urls = new ArrayList<>();
+        urls.add("/*");
+        registrationBean.setUrlPatterns(urls);
+        return registrationBean;
+    }
 }

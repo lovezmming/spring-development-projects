@@ -16,6 +16,6 @@ public class CamelTest {
     public void testCamel() throws Exception {
         camelClient.addRoute("test", "http://localhost:8080/services/Hello?wsdl");
         camelClient.send("test", "hello", new HelloRequest(), HelloResponse.class, "1234");
-        camelClient.destroy();
+        camelClient.removeRoute("test");
     }
 }

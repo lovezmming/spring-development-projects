@@ -41,7 +41,7 @@
         <json-lib.version>2.4</json-lib.version>
         <commons-lang3.version>3.4</commons-lang3.version>
         <commons-pool2.version>2.0</commons-pool2.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <curator.version>4.0.0</curator.version>
         <zookeeper.version>3.4.8</zookeeper.version>
         <dom4j.version>1.6.1</dom4j.version>

@@ -47,3 +47,11 @@ soapmock
   1.springboot集成cxf/spring-ws进行webservice服务端开发  
   2.提供客户端调用方式  
   3.实现过滤request请求  
+
+redis-service
+  add(2023-10)
+  1.提供基础set、get缓存操作
+
+schedule-job-service
+  add(2023-11)
+  1.集成quartz实现定时调度

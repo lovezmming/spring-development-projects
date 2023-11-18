@@ -22,6 +22,10 @@
         <module>item-bank-common</module>
         <module>item-bank-latex-service</module>
         <module>item-bank-service</module>
+        <module>item-bank-resource-service</module>
+        <module>item-bank-paper-service</module>
+        <module>item-bank-task-service</module>
+        <module>item-bank-exercise-service</module>
     </modules>
 
     <properties>

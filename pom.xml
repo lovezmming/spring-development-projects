@@ -25,6 +25,10 @@
         <module>shev-workflow</module>
         <!-- 8.springboot集成webservice做服务调用 -->
         <module>soapmock</module>
+        <!-- 9.redisson继承分布式相关操作 -->
+        <module>redis-service</module>
+        <!-- 10.定时调度：quartz -->
+        <module>schedule-job-service</module>
     </modules>
 
 </project>

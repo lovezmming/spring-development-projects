@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.shev</groupId>
-    <artifactId>workflow</artifactId>
+    <artifactId>shev-workflow</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>workflow</name>
     <description>workflow</description>

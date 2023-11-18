@@ -26,6 +26,7 @@
         <module>item-bank-paper-service</module>
         <module>item-bank-task-service</module>
         <module>item-bank-exercise-service</module>
+        <module>item-bank-system-service</module>
     </modules>
 
     <properties>

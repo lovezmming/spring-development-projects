@@ -22,6 +22,7 @@
         <module>shev-dubbo-provider-service</module>
         <module>shev-dubbo-provider-bak-service</module>
         <module>shev-dubbo-consumer-service</module>
+        <module>shev-dubbo-provider-service-api</module>
     </modules>
 
     <properties>
